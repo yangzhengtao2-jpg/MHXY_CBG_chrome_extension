@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "MiniExt",
+  "version": "1.0",
+  "description": "最小 Chrome 插件示例",
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "permissions": ["activeTab", "scripting"],
+  "content_scripts": [
+    {
+      "matches": ["*://*.163.com/*"],   // 藏宝阁域名，按需要改
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ]
+}

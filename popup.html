@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>梦幻西游估价助手</title>
+    <style>
+        /* --- 全局和基础样式 --- */
+        body {
+            width: 350px;
+            margin: 0;
+            padding: 15px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #333;
+            background-color: #f9f9f9;
+            box-sizing: border-box; /* 确保 padding 不会撑大宽度 */
+        }
+
+        /* --- 头部样式 --- */
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .header h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #4285f4;
+        }
+
+        /* --- 控制区域样式 --- */
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* 元素之间的间距 */
+            margin-bottom: 20px;
+        }
+
+        button, select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            box-sizing: border-box;
+        }
+
+        button {
+            color: white;
+            border: none;
+        }
+
+        #extract {
+            background-color: #4285f4;
+        }
+        #extract:hover {
+            background-color: #3367d6;
+        }
+
+        #characterSelect {
+            background-color: #fff;
+            color: #333;
+        }
+        #characterSelect:disabled {
+            background-color: #f1f1f1;
+            color: #888;
+            cursor: not-allowed;
+        }
+
+        #estimate {
+            background-color: #5cb85c;
+        }
+        #estimate:hover {
+            background-color: #4cae4c;
+        }
+        #estimate:disabled {
+            background-color: #999;
+            cursor: not-allowed;
+        }
+
+        /* --- 结果和加载状态样式 --- */
+        .loading, .result-area {
+            border: 1px solid #eee;
+            border-radius: 6px;
+            padding: 15px;
+            background-color: #fff;
+        }
+
+        .loading {
+            text-align: center;
+            color: #666;
+            display: none; /* 默认隐藏 */
+        }
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-left: 8px;
+            border: 3px solid rgba(66, 133, 244, 0.3);
+            border-radius: 50%;
+            border-top-color: #4285f4;
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .result-area {
+            display: none; /* 默认隐藏 */
+            max-height: 400px;
+            overflow-y: auto;
+            word-wrap: break-word;
+        }
+        
+        .result-area:empty {
+            display: none;
+        }
+
+        /* --- 结果内容内部样式 --- */
+        .info, .error {
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .info {
+            background-color: #d9edf7;
+            color: #31708f;
+            border: 1px solid #bce8f1;
+        }
+        .error {
+            background-color: #f2dede;
+            color: #a94442;
+            border: 1px solid #ebccd1;
+        }
+
+        .price-estimate {
+            background: linear-gradient(135deg, #f5fafe 0%, #eaf6fa 100%);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .price-estimate h4 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 16px;
+        }
+        .price-estimate .value {
+            font-size: 22px;
+            font-weight: bold;
+            color: #d9534f;
+            margin: 5px 0;
+        }
+        .price-estimate .value.high {
+            color: #5cb85c; /* 性价比 > 1 时显示绿色 */
+        }
+
+        .detailed-analysis h4 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #555;
+            font-size: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .detailed-analysis pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 12px;
+            color: #555;
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h3>梦幻西游角色估价助手</h3>
+    </div>
+
+    <div class="controls">
+        <button id="extract">1. 提取所有角色</button>
+        <select id="characterSelect" disabled>
+            <option value="">-- 请先提取角色 --</option>
+        </select>
+        <button id="estimate" disabled>2. 估计选中角色价格</button>
+    </div>
+
+    <div id="loading" class="loading">
+        处理中，请稍候
+    </div>
+
+    <div id="result" class="result-area"></div>
+
+    <script src="popup.js"></script>
+
+</body>
+</html>

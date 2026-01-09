@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>梦幻西游藏宝阁角色性价比提取工具 - 使用教程</title>
+    <meta name="description" content="梦幻西游藏宝阁角色性价比计算工具，自动提取角色修炼/技能数据，计算账号底子性价比，帮你快速找到高性价比账号！">
+    <meta name="keywords" content="梦幻西游,藏宝阁,角色性价比,修炼计算,技能计算,账号估价">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", Arial, sans-serif;
+        }
+        body {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.8;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        header {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 30px;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: #c8102e; /* 梦幻西游主色调 */
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin: 30px 0 15px;
+            color: #34495e;
+            border-left: 4px solid #c8102e;
+            padding-left: 10px;
+        }
+        h3 {
+            font-size: 1.2rem;
+            margin: 20px 0 10px;
+            color: #4a6583;
+        }
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .ad-slot {
+            margin: 20px auto;
+            text-align: center;
+            width: 100%;
+            max-width: 728px;
+            height: 90px;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            border-radius: 4px;
+        }
+        .step-card {
+            margin: 25px 0;
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        .step-card p {
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        .img-placeholder {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            border: 1px dashed #ccc;
+            border-radius: 4px;
+            margin: 10px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            background: #fff;
+        }
+        .code-block {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+            overflow-x: auto;
+            font-family: Consolas, monospace;
+            font-size: 0.9rem;
+        }
+        .principle-item {
+            margin: 15px 0;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 4px;
+        }
+        .warning {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+            color: #856404;
+            border-left: 4px solid #ffc107;
+        }
+        .qq-group {
+            background: #e8f4fd;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 1.1rem;
+            color: #2d5a80;
+        }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px 0;
+            border-top: 1px solid #eee;
+            color: #777;
+        }
+    </style>
+    <!-- 预留AdSense验证标签位置（替换为你的AdSense meta标签） -->
+    <!-- <meta name="google-adsense-account" content="ca-pub-XXXXXXXXXXXXXXXX"> -->
+</head>
+<body>
+    <header>
+        <h1>梦幻西游藏宝阁角色性价比提取工具</h1>
+        <p>自动提取角色修炼/技能数据，计算账号底子性价比，快速找到高性价比账号！</p>
+    </header>
+
+    <!-- AdSense广告位1：首屏728x90 -->
+    <div class="ad-slot">
+        <!-- 替换为你的AdSense广告代码 -->
+        <!-- <ins class="adsbygoogle"
+             style="display:inline-block;width:728px;height:90px"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"></ins> -->
+        广告位（728x90）
+    </div>
+
+    <div class="container">
+        <section>
+            <h2>📌 工具核心作用</h2>
+            <p>本工具为梦幻西游藏宝阁专用浏览器插件，可自动提取全服搜索结果中角色的修炼、师门技能、帮派技能数据，计算账号「底子性价比」，帮你在海量账号中快速筛选出高性价比角色，避免买贵踩坑！</p>
+        </section>
+
+        <section>
+            <h2>🔧 详细使用步骤</h2>
+
+            <!-- 步骤1 -->
+            <div class="step-card">
+                <h3>步骤1：打开藏宝阁并登录账号</h3>
+                <p>打开<a href="https://xyq.cbg.163.com/" target="_blank">梦幻西游藏宝阁官网</a>，登录自己的网易账号（需绑定游戏角色）。</p>
+                <!-- 预留步骤1图片位 -->
+                <div class="img-placeholder">
+                    步骤1图片：藏宝阁登录页面（替换为你的图片链接，示例：<img src="你的图片URL" style="width:100%;height:100%;object-fit:contain;" />）
+                </div>
+            </div>
+
+            <!-- 步骤2 -->
+            <div class="step-card">
+                <h3>步骤2：进入角色搜索页面</h3>
+                <p>在藏宝阁首页选择「跨服购买」或「全服搜索」，点击「角色搜索」进入筛选页面。</p>
+                <!-- 预留步骤2图片位 -->
+                <div class="img-placeholder">
+                    步骤2图片：藏宝阁跨服购买/全服搜索入口（替换为你的图片链接）
+                </div>
+            </div>
+
+            <!-- 步骤3 -->
+            <div class="step-card">
+                <h3>步骤3：设置账号筛选条件</h3>
+                <p>根据自身需求设置筛选条件（如等级、门派、修炼下限、服务器等），缩小搜索范围。</p>
+                <!-- 预留步骤3图片位 -->
+                <div class="img-placeholder">
+                    步骤3图片：角色筛选条件设置界面（替换为你的图片链接）
+                </div>
+            </div>
+
+            <!-- 步骤4 -->
+            <div class="step-card">
+                <h3>步骤4：执行全服搜索</h3>
+                <p>确认筛选条件后，点击「全服搜索」按钮，等待页面加载出符合条件的角色列表。</p>
+                <!-- 预留步骤4图片位 -->
+                <div class="img-placeholder">
+                    步骤4图片：全服搜索按钮位置及角色列表（替换为你的图片链接）
+                </div>
+            </div>
+
+            <!-- 步骤5 -->
+            <div class="step-card">
+                <h3>步骤5：插件提取所有角色数据</h3>
+                <p>打开浏览器扩展栏中的「藏宝阁性价比工具」，点击「提取所有角色」按钮，插件自动解析当前页面所有角色的核心数据。</p>
+                <!-- 预留步骤5图片位 -->
+                <div class="img-placeholder">
+                    步骤5图片：浏览器插件点击提取按钮（替换为你的图片链接）
+                </div>
+            </div>
+
+            <!-- 步骤6 -->
+            <div class="step-card">
+                <h3>步骤6：筛选高性价比角色</h3>
+                <p>插件提取完成后，查看所有角色的价格和性价比数值，优先选择性价比高的角色，进行进一步估价和对比。</p>
+                <!-- 预留步骤6图片位 -->
+                <div class="img-placeholder">
+                    步骤6图片：角色性价比数据展示界面（替换为你的图片链接）
+                </div>
+            </div>
+        </section>
+
+        <!-- AdSense广告位2：内容中336x280 -->
+        <div class="ad-slot" style="max-width:336px;height:280px;margin:30px auto;">
+            <!-- 替换为你的AdSense广告代码 -->
+            <!-- <ins class="adsbygoogle"
+                 style="display:inline-block;width:336px;height:280px"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"></ins> -->
+            广告位（336x280）
+        </div>
+
+        <section>
+            <h2>💡 核心计算原理（小白也能懂）</h2>
+
+            <div class="principle-item">
+                <h3>1. 数据计算范围</h3>
+                <p>本工具暂时仅计算角色核心「底子」：修炼（人物修炼、宝宝修炼）、师门技能、帮派技能；<br>
+                暂未纳入计算的内容：装备、宝宝、坐骑、锦衣、祥瑞、潜能果等（后续版本将逐步完善）。</p>
+            </div>
+
+            <div class="principle-item">
+                <h3>2. 性价比计算逻辑</h3>
+                <p>性价比 = 账号底子总成本（梦幻币换算RMB） ÷ 藏宝阁标价<br>
+                「底子总成本」：指从零练到当前修炼/技能水平，通过「秒菜」方式花费的RMB总额；<br>
+                数值意义：该值越高，代表账号底子越「值」，花更少的钱买到更高的底子。</p>
+            </div>
+
+            <div class="principle-item">
+                <h3>3. 数值参考说明</h3>
+                <p>计算时所有服务器使用<strong>统一的金价比例、修炼果价格</strong>，因此单个账号的性价比数值仅作参考；<br>
+                核心价值：<strong>对比两个账号的性价比差值</strong>，差值越大，账号性价比差距越明显。</p>
+            </div>
+
+            <div class="principle-item">
+                <h3>4. 非计算项处理建议</h3>
+                <p>对于潜能果等暂未纳入计算的内容，可通过「筛选条件」过滤掉差异大的账号（如筛选「潜能果≥100」），此时对比剩余账号的性价比即可忽略这部分差异。</p>
+            </div>
+        </section>
+
+        <div class="warning">
+            <h3>⚠️ 重要提示</h3>
+            <p>1. 插件仅提取藏宝阁公开数据，不涉及账号密码、隐私信息，请放心使用；<br>
+            2. 性价比数值仅为参考，最终购买决策请结合账号实际装备、宝宝等综合判断；<br>
+            3. 工具仅适配Chrome浏览器，其他浏览器（Edge/Firefox）暂未测试。</p>
+        </div>
+
+        <div class="qq-group">
+            <h3>📢 批量账号搜索专属</h3>
+            <p>浏览器插件仅能提取当前页面的账号数据，若需从「少条件、全服海量账号」中找高性价比角色，可加QQ群：<strong>595406171</strong>，直接获取完整搜索文件！</p>
+        </div>
+    </div>
+
+    <!-- AdSense广告位3：底部728x90 -->
+    <div class="ad-slot">
+        <!-- 替换为你的AdSense广告代码 -->
+        <!-- <ins class="adsbygoogle"
+             style="display:inline-block;width:728px;height:90px"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"></ins> -->
+        广告位（728x90）
+    </div>
+
+    <footer>
+        <p>梦幻西游藏宝阁角色性价比工具 © 2025 | 仅用于游戏账号参考，与网易官方无关</p>
+    </footer>
+
+    <!-- AdSense加载脚本（替换为你的代码） -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+     crossorigin="anonymous"></script> -->
+    <script>
+        // 页面交互优化：点击步骤标题滚动到对应图片
+        document.querySelectorAll('.step-card h3').forEach(heading => {
+            heading.addEventListener('click', () => {
+                const img = heading.nextElementSibling.nextElementSibling;
+                if (img) {
+                    img.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
