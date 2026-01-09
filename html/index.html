@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>梦幻西游藏宝阁角色性价比提取工具 - 使用教程</title>
+    <meta name="description" content="梦幻西游藏宝阁角色性价比计算工具，自动提取角色修炼/技能数据，计算账号底子性价比，帮你快速找到高性价比账号！">
+    <meta name="keywords" content="梦幻西游,藏宝阁,角色性价比,修炼计算,技能计算,账号估价">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", Arial, sans-serif;
+        }
+        body {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px;
+            line-height: 1.8;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        header {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 30px;
+        }
+        h1 {
+            font-size: clamp(1.8rem, 4vw, 2.2rem); /* 响应式字体 */
+            margin-bottom: 10px;
+            color: #c8102e; /* 梦幻西游主色调 */
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        h2 {
+            font-size: clamp(1.4rem, 3vw, 1.6rem);
+            margin: 30px 0 15px;
+            color: #34495e;
+            border-left: 4px solid #c8102e;
+            padding-left: 10px;
+        }
+        h3 {
+            font-size: clamp(1.1rem, 2vw, 1.2rem);
+            margin: 20px 0 10px;
+            color: #4a6583;
+            cursor: pointer; /* 增加鼠标指针样式 */
+            transition: color 0.2s ease;
+        }
+        h3:hover {
+            color: #c8102e; /* 标题hover效果 */
+        }
+        .container {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px; /* 更大圆角更美观 */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06); /* 更柔和的阴影 */
+        }
+        .ad-slot {
+            margin: 20px auto;
+            text-align: center;
+            width: 100%;
+            max-width: 728px;
+            height: 90px;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+        /* 移动端广告位适配 */
+        @media (max-width: 768px) {
+            .ad-slot {
+                height: 60px;
+                max-width: 100%;
+            }
+            .ad-slot[style*="336px"] {
+                height: 250px;
+                max-width: 100%;
+            }
+        }
+        .step-card {
+            margin: 25px 0;
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            background: #fafafa;
+            transition: box-shadow 0.3s ease;
+        }
+        .step-card:hover {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* 卡片hover效果 */
+        }
+        .step-card p {
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        /* 优化图片容器样式 */
+        .img-container {
+            width: 100%;
+            max-width: 800px;
+            height: auto; /* 自适应高度 */
+            min-height: 200px; /* 最小高度防止塌陷 */
+            border: 1px dashed #ccc;
+            border-radius: 8px;
+            margin: 15px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            background: #fff;
+            padding: 10px;
+            overflow: hidden;
+        }
+        .img-container img {
+            max-width: 100%;
+            max-height: 400px;
+            border-radius: 4px;
+            transition: transform 0.3s ease;
+        }
+        .img-container img:hover {
+            transform: scale(1.02); /* 图片hover放大效果 */
+        }
+        .code-block {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            overflow-x: auto;
+            font-family: Consolas, monospace;
+            font-size: 0.9rem;
+            border: 1px solid #eee;
+        }
+        .principle-item {
+            margin: 15px 0;
+            padding: 15px; /* 增加内边距 */
+            background: #f9f9f9;
+            border-radius: 8px;
+            border-left: 3px solid #c8102e; /* 增加左侧标识线 */
+        }
+        .warning {
+            background: #fff3cd;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 20px 0;
+            color: #856404;
+            border-left: 4px solid #ffc107;
+        }
+        .qq-group {
+            background: #e8f4fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 1.1rem;
+            color: #2d5a80;
+            border: 1px solid #d1e7fd;
+        }
+        .qq-group strong {
+            color: #c8102e;
+            font-size: 1.2rem;
+        }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px 0;
+            border-top: 1px solid #eee;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        /* 链接样式优化 */
+        a {
+            color: #c8102e;
+            text-decoration: none;
+            border-bottom: 1px dotted #c8102e;
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #a00b24;
+            border-bottom: 1px solid #a00b24;
+        }
+        /* 步骤序号美化 */
+        .step-title {
+            display: inline-flex;
+            align-items: center;
+        }
+        .step-title::before {
+            content: attr(data-step);
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: #c8102e;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            font-size: 0.8rem;
+            margin-right: 8px;
+        }
+    </style>
+    <!-- 预留AdSense验证标签位置（替换为你的AdSense meta标签） -->
+    <!-- <meta name="google-adsense-account" content="ca-pub-XXXXXXXXXXXXXXXX"> -->
+</head>
+<body>
+    <header>
+        <h1>梦幻西游藏宝阁角色性价比提取工具</h1>
+        <p>自动提取角色修炼/技能数据，计算账号底子性价比，快速找到高性价比账号！</p>
+    </header>
+
+    <!-- AdSense广告位1：首屏728x90 -->
+    <div class="ad-slot">
+        <!-- 替换为你的AdSense广告代码 -->
+        <!-- <ins class="adsbygoogle"
+             style="display:inline-block;width:728px;height:90px"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"></ins> -->
+        广告位（728x90）
+    </div>
+
+    <div class="container">
+        <section>
+            <h2>📌 工具核心作用</h2>
+            <p>本工具为梦幻西游藏宝阁专用浏览器插件，可自动提取全服搜索结果中角色的修炼、师门技能、帮派技能数据，计算账号「底子性价比」，帮你在海量账号中快速筛选出高性价比角色，避免买贵踩坑！</p>
+        </section>
+
+        <section>
+            <h2>🔧 详细使用步骤</h2>
+
+            <!-- 步骤1 -->
+            <div class="step-card">
+                <h3 class="step-title" data-step="1">打开藏宝阁并登录账号</h3>
+                <p>打开<a href="https://xyq.cbg.163.com/" target="_blank" rel="noopener noreferrer">梦幻西游藏宝阁官网</a>，登录自己的网易账号（需绑定游戏角色）。</p>
+                <!-- 优化图片容器 -->
+                <div class="img-container">
+                    <img src="https://raw.githubusercontent.com/yangzhengtao2-jpg/MHXY_CBG_chrome_extension/main/image/%E5%9B%BE%E7%89%871.png" alt="藏宝阁登录页面" />
+                </div>
+            </div>
+
+            <!-- 步骤2 -->
+            <div class="step-card">
+                <h3 class="step-title" data-step="2">进入角色搜索页面</h3>
+                <p>在藏宝阁首页选择「跨服购买」或「全服搜索」，点击「角色搜索」进入筛选页面。</p>
+                <div class="img-container">
+                    <img src="https://raw.githubusercontent.com/yangzhengtao2-jpg/MHXY_CBG_chrome_extension/main/image/%E5%9B%BE%E7%89%872.png" alt="藏宝阁跨服购买/全服搜索入口" />
+                </div>
+            </div>
+
+            <!-- 步骤3 -->
+            <div class="step-card">
+                <h3 class="step-title" data-step="3">设置账号筛选条件</h3>
+                <p>根据自身需求设置筛选条件（如等级、门派、修炼下限、服务器等），缩小搜索范围。</p>
+                <div class="img-container">
+                    <img src="https://raw.githubusercontent.com/yangzhengtao2-jpg/MHXY_CBG_chrome_extension/main/image/%E5%9B%BE%E7%89%873.png" alt="角色筛选条件设置界面" />
+                </div>
+            </div>
+
+            <!-- 步骤4 -->
+            <div class="step-card">
+                <h3 class="step-title" data-step="4">执行全服搜索</h3>
+                <p>确认筛选条件后，点击「全服搜索」按钮，等待页面加载出符合条件的角色列表。</p>
+                <div class="img-container">
+                    <img src="https://raw.githubusercontent.com/yangzhengtao2-jpg/MHXY_CBG_chrome_extension/main/image/%E5%9B%BE%E7%89%874.png" alt="全服搜索按钮位置及角色列表" />
+                </div>
+            </div>
+
+            <!-- 步骤5 -->
+            <div class="step-card">
+                <h3 class="step-title" data-step="5">插件提取所有角色数据</h3>
+                <p>打开浏览器扩展栏中的「藏宝阁性价比工具」，点击「提取所有角色」按钮，插件自动解析当前页面所有角色的核心数据。</p>
+                <div class="img-container">
+                    <img src="https://raw.githubusercontent.com/yangzhengtao2-jpg/MHXY_CBG_chrome_extension/main/image/%E5%9B%BE%E7%89%875.png" alt="浏览器插件点击提取按钮" />
+                </div>
+            </div>
+
+            <!-- 步骤6 -->
+            <div class="step-card">
+                <h3 class="step-title" data-step="6">筛选高性价比角色</h3>
+                <p>插件提取完成后，查看所有角色的价格和性价比数值，优先选择性价比高的角色，进行进一步估价和对比。</p>
+                <div class="img-container">
+                    <img src="https://raw.githubusercontent.com/yangzhengtao2-jpg/MHXY_CBG_chrome_extension/main/image/%E5%9B%BE%E7%89%876.png" alt="角色性价比数据展示界面" />
+                </div>
+            </div>
+        </section>
+
+        <!-- AdSense广告位2：内容中336x280 -->
+        <div class="ad-slot" style="max-width:336px;height:280px;margin:30px auto;">
+            <!-- 替换为你的AdSense广告代码 -->
+            <!-- <ins class="adsbygoogle"
+                 style="display:inline-block;width:336px;height:280px"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"></ins> -->
+            广告位（336x280）
+        </div>
+
+        <section>
+            <h2>💡 核心计算原理（小白也能懂）</h2>
+
+            <div class="principle-item">
+                <h3>1. 数据计算范围</h3>
+                <p>本工具暂时仅计算角色核心「底子」：修炼（人物修炼、宝宝修炼）、师门技能、帮派技能；<br>
+                暂未纳入计算的内容：装备、宝宝、坐骑、锦衣、祥瑞、潜能果等（后续版本将逐步完善）。</p>
+            </div>
+
+            <div class="principle-item">
+                <h3>2. 性价比计算逻辑</h3>
+                <p>性价比 = 账号底子总成本（梦幻币换算RMB） ÷ 藏宝阁标价<br>
+                「底子总成本」：指从零练到当前修炼/技能水平，通过「秒菜」方式花费的RMB总额；<br>
+                数值意义：该值越高，代表账号底子越「值」，花更少的钱买到更高的底子。</p>
+            </div>
+
+            <div class="principle-item">
+                <h3>3. 数值参考说明</h3>
+                <p>计算时所有服务器使用<strong>统一的金价比例、修炼果价格</strong>，因此单个账号的性价比数值仅作参考；<br>
+                核心价值：<strong>对比两个账号的性价比差值</strong>，差值越大，账号性价比差距越明显。</p>
+            </div>
+
+            <div class="principle-item">
+                <h3>4. 非计算项处理建议</h3>
+                <p>对于潜能果等暂未纳入计算的内容，可通过「筛选条件」过滤掉差异大的账号（如筛选「潜能果≥100」），此时对比剩余账号的性价比即可忽略这部分差异。</p>
+            </div>
+        </section>
+
+        <div class="warning">
+            <h3>⚠️ 重要提示</h3>
+            <p>1. 插件仅提取藏宝阁公开数据，不涉及账号密码、隐私信息，请放心使用；<br>
+            2. 性价比数值仅为参考，最终购买决策请结合账号实际装备、宝宝等综合判断；<br>
+            3. 工具仅适配Chrome浏览器，其他浏览器（Edge/Firefox）暂未测试。</p>
+        </div>
+
+        <div class="qq-group">
+            <h3>📢 批量账号搜索专属</h3>
+            <p>浏览器插件仅能提取当前页面的账号数据，若需从「少条件、全服海量账号」中找高性价比角色，可加QQ群：<strong>595406171</strong>，直接获取完整搜索文件！</p>
+        </div>
+    </div>
+
+    <!-- AdSense广告位3：底部728x90 -->
+    <div class="ad-slot">
+        <!-- 替换为你的AdSense广告代码 -->
+        <!-- <ins class="adsbygoogle"
+             style="display:inline-block;width:728px;height:90px"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"></ins> -->
+        广告位（728x90）
+    </div>
+
+    <footer>
+        <p>梦幻西游藏宝阁角色性价比工具 © 2025 | 仅用于游戏账号参考，与网易官方无关</p>
+    </footer>
+
+    <!-- AdSense加载脚本（替换为你的代码） -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+     crossorigin="anonymous"></script> -->
+    <script>
+        // 页面交互优化：点击步骤标题滚动到对应图片
+        document.querySelectorAll('.step-card h3').forEach(heading => {
+            heading.addEventListener('click', () => {
+                const imgContainer = heading.nextElementSibling.nextElementSibling;
+                if (imgContainer) {
+                    imgContainer.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'center' // 滚动到容器中心
+                    });
+                }
+            });
+        });
+
+        // 图片加载失败处理
+        document.querySelectorAll('.img-container img').forEach(img => {
+            img.addEventListener('error', function() {
+                this.parentElement.innerHTML = `图片加载失败（${this.alt}）<br>请检查图片链接是否有效`;
+                this.parentElement.style.color = '#dc3545';
+            });
+        });
+
+        // 页面加载完成后平滑滚动优化
+        document.addEventListener('DOMContentLoaded', () => {
+            // 给所有锚点链接添加平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
