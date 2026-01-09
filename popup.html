@@ -55,7 +55,12 @@
             color: white;
             border: none;
         }
-
+        #openIndex {
+            background-color: #f08000;
+        }
+        #openIndex:hover {
+            background-color: #e07000;
+        }   
         #extract {
             background-color: #4285f4;
         }
@@ -193,6 +198,7 @@
     </div>
 
     <div class="controls">
+        <button id="openIndex">打开使用帮助</button>
         <button id="extract">1. 提取所有角色</button>
         <select id="characterSelect" disabled>
             <option value="">-- 请先提取角色 --</option>

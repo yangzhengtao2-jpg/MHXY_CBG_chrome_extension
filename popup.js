@@ -13,7 +13,7 @@ const estimateBtn = document.getElementById('estimate');
 const characterSelect = document.getElementById('characterSelect');
 const resultArea = document.getElementById('result');
 const loading = document.getElementById('loading');
-
+const openIndexBtn = document.getElementById('openIndex');
 // ===================================================================
 // 3. UI 辅助函数
 // ===================================================================
@@ -164,7 +164,20 @@ function populateCharacterSelect(characters) {
 // ===================================================================
 // 6. 事件监听器
 // ===================================================================
-
+// 打开index.html详情页
+openIndexBtn.onclick = async () => {
+    try {
+        // 获取index.html的绝对URL（基于扩展程序根目录）
+        const indexUrl = chrome.runtime.getURL('html/index.html');
+        // 打开新标签页加载index.html
+        await chrome.tabs.create({ 
+            url: indexUrl,
+            active: true // 新标签页是否激活
+        });
+    } catch (e) {
+        showError('打开详情页失败：' + e.message);
+    }
+};
 // 提取所有角色信息
 extractBtn.onclick = async () => {
     try {

@@ -1,17 +1,26 @@
 {
   "manifest_version": 3,
-  "name": "MiniExt",
+  "name": "梦幻西游藏宝阁角色性价比工具",
   "version": "1.0",
-  "description": "最小 Chrome 插件示例",
+  "description": "自动提取角色信息并计算性价比",
+  "permissions": ["activeTab", "tabs", "scripting"],
   "action": {
     "default_popup": "popup.html"
   },
-  "permissions": ["activeTab", "scripting"],
   "content_scripts": [
     {
-      "matches": ["*://*.163.com/*"],   // 藏宝阁域名，按需要改
+      "matches": ["*://*.163.com/*"],
       "js": ["content.js"],
       "run_at": "document_end"
     }
-  ]
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["html/index.html"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"  // 关键：路径改为和manifest同目录
+  }
 }
